@@ -17,7 +17,8 @@ defmodule AshTwitter.Application do
       # Start a worker by calling: AshTwitter.Worker.start_link(arg)
       # {AshTwitter.Worker, arg},
       # Start to serve requests, typically the last entry
-      AshTwitterWeb.Endpoint
+      AshTwitterWeb.Endpoint,
+      {AshAuthentication.Supervisor, otp_app: :ash_twitter}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

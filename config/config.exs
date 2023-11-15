@@ -73,7 +73,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Ash
-config :ash_twitter, :ash_apis, [AshTwitter.Support]
+config :ash_twitter, :ash_apis, [AshTwitter.Accounts, AshTwitter.Support]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
