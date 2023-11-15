@@ -51,7 +51,7 @@ defmodule AshTwitter.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      # ash
+      # ash dependencies
       {:ash, "~> 2.17.1"},
       {:ash_postgres, "~> 1.3"},
       {:ash_json_api, "~> 0.34"},
