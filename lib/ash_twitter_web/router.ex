@@ -1,5 +1,6 @@
 defmodule AshTwitterWeb.Router do
   use AshTwitterWeb, :router
+  use AshAuthentication.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,11 @@ defmodule AshTwitterWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    sign_in_route(register_path: "/register", reset_path: "/reset")
+    sign_out_route AuthController
+    auth_routes_for AshTwitter.Accounts.User, to: AuthController
+    reset_route []
   end
 
 
