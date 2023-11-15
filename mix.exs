@@ -72,6 +72,12 @@ defmodule AshTwitter.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind default", "esbuild default"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      "ash.reset": [
+        "ash_postgres.drop",
+        "ecto.create",
+        "ash_postgres.generate_migrations",
+        "ash_postgres.migrate"
+      ]
     ]
   end
 end
