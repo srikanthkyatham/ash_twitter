@@ -5,5 +5,6 @@ defmodule AshTwitter.Support.Registry do
     entry AshTwitter.Support.Tweet
     entry AshTwitter.Support.Comment
     entry AshTwitter.Support.Author
+    entry AshTwitter.Support.AuthorLike
   end
 end

@@ -1,7 +1,8 @@
-alias AshTwitter.Support.Tweet
-alias AshTwitter.Support.Author
-alias AshTwitter.Support.Comment
 alias AshTwitter.Support, as: SupportApi
+alias AshTwitter.Support.Author
+alias AshTwitter.Support.AuthorLike
+alias AshTwitter.Support.Comment
+alias AshTwitter.Support.Tweet
 
 defmodule IExPopulate do
    require Ash.Query
@@ -28,10 +29,13 @@ defmodule IExPopulate do
     |> SupportApi.create!()
    end
 
+   def create_author_like(author_id, tweet_id) do
+    AuthorLike.like(author_id, tweet_id)
+   end
+
    def populate() do
      # create one user
      author = create_author("Naruto", "naruto@hiddenleaf.com")
-     IO.inspect(author)
      # create 5 tweets, 5 comments for each tweet
      for i <- 0..5 do
        tweet_content = "Tweet #{i}"
