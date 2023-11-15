@@ -13,7 +13,18 @@ defmodule AshTwitter.Support.Comment do
 
   actions do
     # Add a set of simple actions. You'll customize these later.
-    defaults [:create, :read, :update, :destroy]
+    defaults [:read, :update, :destroy]
+
+    create :create do
+      primary?(true)
+
+      argument :tweet_id, :uuid do
+        allow_nil?(false)
+      end
+
+      change(set_attribute(:tweet_id, arg(:tweet_id)))
+    end
+
   end
 
   # Attributes are the simple pieces of data that exist on your resource

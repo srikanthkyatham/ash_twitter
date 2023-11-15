@@ -3,6 +3,8 @@ defmodule AshTwitter.Support.Author do
   use Ash.Resource,
     data_layer: AshPostgres.DataLayer
 
+  alias AshTwitter.Support.Tweet
+
   postgres do
     table "authors"
     repo AshTwitter.Repo
@@ -22,5 +24,9 @@ defmodule AshTwitter.Support.Author do
     # Add a string type attribute called `:subject`
     attribute :name, :string
     attribute :email, :string
+  end
+
+  relationships do
+    has_many :tweets, Tweet
   end
 end

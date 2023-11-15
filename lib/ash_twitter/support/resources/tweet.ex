@@ -13,7 +13,17 @@ defmodule AshTwitter.Support.Tweet do
 
   actions do
     # Add a set of simple actions. You'll customize these later.
-    defaults [:create, :read, :update, :destroy]
+    defaults [:read, :update, :destroy]
+
+    create :create do
+      primary?(true)
+
+      argument :author_id, :uuid do
+        allow_nil?(false)
+      end
+
+      change(set_attribute(:author_id, arg(:author_id)))
+    end
   end
 
   # Attributes are the simple pieces of data that exist on your resource
