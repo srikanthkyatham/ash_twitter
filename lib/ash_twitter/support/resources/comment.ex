@@ -1,6 +1,15 @@
 defmodule AshTwitter.Support.Comment do
   # This turns this module into a resource
-  use Ash.Resource
+  use Ash.Resource,
+    data_layer: AshPostgres.DataLayer
+
+  alias AshTwitter.Support.Tweet
+  alias AshTwitter.Support
+
+  postgres do
+    table "comments"
+    repo AshTwitter.Repo
+  end
 
   actions do
     # Add a set of simple actions. You'll customize these later.
@@ -13,6 +22,14 @@ defmodule AshTwitter.Support.Comment do
     uuid_primary_key :id
 
     # Add a string type attribute called `:subject`
-    attribute :subject, :string
+    attribute :content, :string
   end
+
+  relationships do
+    belongs_to :tweet, Tweet do
+      api Support
+      allow_nil? false
+    end
+  end
+
 end

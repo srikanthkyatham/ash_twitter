@@ -1,6 +1,13 @@
 defmodule AshTwitter.Support.Author do
   # This turns this module into a resource
-  use Ash.Resource
+  use Ash.Resource,
+    data_layer: AshPostgres.DataLayer
+
+  postgres do
+    table "authors"
+    repo AshTwitter.Repo
+  end
+
 
   actions do
     # Add a set of simple actions. You'll customize these later.
@@ -13,6 +20,7 @@ defmodule AshTwitter.Support.Author do
     uuid_primary_key :id
 
     # Add a string type attribute called `:subject`
-    attribute :subject, :string
+    attribute :name, :string
+    attribute :email, :string
   end
 end

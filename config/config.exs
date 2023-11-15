@@ -30,6 +30,7 @@ config :ash_twitter, AshTwitterWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :ash_twitter, AshTwitter.Mailer, adapter: Swoosh.Adapters.Local
+config :ash_twitter, ecto_repos: [AshTwitter.Repo]
 
 # Configure esbuild (the version is required)
 config :esbuild,
