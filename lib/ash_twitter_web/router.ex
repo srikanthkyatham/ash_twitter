@@ -20,6 +20,12 @@ defmodule AshTwitterWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api/json" do
+    pipe_through(:api)
+
+    forward "/twitter", AshTwitterWeb.Support.Router
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", AshTwitterWeb do
   #   pipe_through :api

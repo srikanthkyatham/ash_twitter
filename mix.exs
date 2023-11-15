@@ -19,7 +19,7 @@ defmodule AshTwitter.MixProject do
   def application do
     [
       mod: {AshTwitter.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ash_json_api]
     ]
   end
 
@@ -53,7 +53,8 @@ defmodule AshTwitter.MixProject do
       {:plug_cowboy, "~> 2.5"},
       # ash
       {:ash, "~> 2.17.1"},
-      {:ash_postgres, "~> 1.3"}
+      {:ash_postgres, "~> 1.3"},
+      {:ash_json_api, "~> 0.34"},
     ]
   end
 

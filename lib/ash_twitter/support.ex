@@ -1,5 +1,5 @@
 defmodule AshTwitter.Support do
-  use Ash.Api
+  use Ash.Api, extensions: [AshJsonApi.Api]
 
   resources do
     # This defines the set of resources that can be used with this API

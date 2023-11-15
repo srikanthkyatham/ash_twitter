@@ -1,9 +1,24 @@
 defmodule AshTwitter.Support.Author do
   # This turns this module into a resource
   use Ash.Resource,
-    data_layer: AshPostgres.DataLayer
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshJsonApi.Resource]
 
   alias AshTwitter.Support.Tweet
+
+
+  json_api do
+    type "tweet"
+
+    routes do
+      base "/tweets"
+
+      get :read
+      index :read
+      post :create
+    end
+  end
+
 
   postgres do
     table "authors"

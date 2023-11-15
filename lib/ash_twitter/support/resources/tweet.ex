@@ -1,13 +1,26 @@
 defmodule AshTwitter.Support.Tweet do
   # This turns this module into a resource
   use Ash.Resource,
-    data_layer: AshPostgres.DataLayer
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshJsonApi.Resource]
 
   alias AshTwitter.Support
   alias AshTwitter.Support.Author
   alias AshTwitter.Support.AuthorLike
   alias AshTwitter.Repo
   import Ecto.Query, only: [from: 2]
+
+  json_api do
+    type "tweet"
+
+    routes do
+      base "/tweets"
+
+      get :read
+      index :read
+      post :create
+    end
+  end
 
   postgres do
     table "tweets"

@@ -1,10 +1,24 @@
 defmodule AshTwitter.Support.Comment do
   # This turns this module into a resource
   use Ash.Resource,
-    data_layer: AshPostgres.DataLayer
+    data_layer: AshPostgres.DataLayer,
+    extensions: [AshJsonApi.Resource]
 
   alias AshTwitter.Support.Tweet
   alias AshTwitter.Support
+
+  json_api do
+    type "comment"
+
+    routes do
+      base "/comments"
+
+      get :read
+      index :read
+      post :create
+    end
+  end
+
 
   postgres do
     table "comments"

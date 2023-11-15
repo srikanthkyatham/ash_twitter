@@ -32,6 +32,16 @@ config :ash_twitter, AshTwitterWeb.Endpoint,
 config :ash_twitter, AshTwitter.Mailer, adapter: Swoosh.Adapters.Local
 config :ash_twitter, ecto_repos: [AshTwitter.Repo]
 
+      # ...
+# config/config.exs
+config :mime, :types, %{
+  "application/vnd.api+json" => ["json"]
+}
+
+config :mime, :extensions, %{
+  "json" => "application/vnd.api+json"
+}
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
