@@ -20,11 +20,14 @@ defmodule AshTwitterWeb.Router do
     get "/", PageController, :home
   end
 
-  scope "/api/json" do
-    pipe_through(:api)
 
-    forward "/twitter", AshTwitterWeb.Support.Router
-  end
+  forward "/api/swaggerui",
+    OpenApiSpex.Plug.SwaggerUI,
+    path: "/api/open_api",
+    title: "AshTwitter's JSON-API - Swagger UI",
+    default_model_expand_depth: 4
+
+  forward "/api", AshTwitterWeb.Support.Router
 
   # Other scopes may use custom stacks.
   # scope "/api", AshTwitterWeb do

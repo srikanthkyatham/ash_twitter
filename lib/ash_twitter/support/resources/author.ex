@@ -8,10 +8,10 @@ defmodule AshTwitter.Support.Author do
 
 
   json_api do
-    type "tweet"
+    type "author"
 
     routes do
-      base "/tweets"
+      base "/authors"
 
       get :read
       index :read

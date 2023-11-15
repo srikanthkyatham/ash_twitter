@@ -55,6 +55,7 @@ defmodule AshTwitter.MixProject do
       {:ash, "~> 2.17.1"},
       {:ash_postgres, "~> 1.3"},
       {:ash_json_api, "~> 0.34"},
+      {:open_api_spex, "~> 3.16"}
     ]
   end
 
